@@ -13,37 +13,10 @@ function Calculator() {
             'operand2': info['operand2']
         };
 
-        ajax_facade.getResult(info['action'], parameters, function(answer) {
+        ajax_facade.getResult(info['action'], parameters, show_result, function(answer) {
             info['answer'] = answer;
-            show_result(info['answer']);
         });
     }
-
-    /*function isNumeric(number) {
-        return !isNaN(parseFloat(number)) && isFinite(number);
-    }
-
-    function isValid(property, value) {
-        var valid = false;
-        
-        switch(property) {
-            case 'operand1':
-            case 'operand2':
-            case 'answer':
-                if(isNumeric(value)) {
-                    valid = true;
-                }
-                break;
-
-            case 'operation':
-                if(['add', 'mul', 'sub', 'div', ''].indexOf(value) !== -1) {
-                    valid = true;
-                }
-                break;
-        }
-
-        return valid;
-    }*/
 
     this.set = function(property, value) {
         info[property] = value;

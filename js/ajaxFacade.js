@@ -40,7 +40,7 @@ function AjaxFacade() {
         return files[action] + parseParameters(parameters);
     }
 
-    this.getResult = function(action, parameters, success_callback) {
+    this.getResult = function(action, parameters, show_result, success_callback) {
         var ajax = getAjax();
 
         ajax.open('GET', createURI(action, parameters), true);
@@ -49,6 +49,7 @@ function AjaxFacade() {
             if(ajax.readyState === 4) {
                 if(ajax.status === 200) {
                     success_callback(ajax.responseText);
+                    show_result(ajax.responseText)
                 }
             }
         };
